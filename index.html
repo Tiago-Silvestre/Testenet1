@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    .animation {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: #3498db;
+      animation: spin 4s linear infinite, fadeInOut 6s ease infinite, moveRandomly 10s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes moveRandomly {
+      0%, 100% {
+        transform: translate(0, 0);
+      }
+      20% {
+        transform: translate(30px, 30px);
+      }
+      40% {
+        transform: translate(-30px, 30px);
+      }
+      60% {
+        transform: translate(-30px, -30px);
+      }
+      80% {
+        transform: translate(30px, -30px);
+      }
+    }
+
+    .quote {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+      font-style: italic;
+      z-index: 2;
+    }
+
+    .quote.hidden {
+      display: none;
+    }
+  </style>
+  <title>Animação em Loop</title>
+</head>
+<body>
+  <div class="animation">
+    <div class="quote">"A verdadeira <i>sabedoria</i> está em reconhecer a própria <b>ignorância</b>."</div>
+    <div class="quote hidden">"A mente que se abre a uma nova ideia jamais volta ao seu tamanho original."</div>
+    <div class="quote hidden">"O único modo de fazer um grande trabalho é amar o que você faz."</div>
+    <div class="quote hidden">"O segredo do sucesso é a constância do propósito."</div>
+    <div class="quote hidden">"A felicidade não está em viver, mas em saber viver."</div>
+    <div class="quote hidden">"A imaginação é mais importante que o conhecimento."</div>
+    <div class="quote hidden">"A vida é o que acontece enquanto você está ocupado fazendo outros planos."</div>
+    <div class="quote hidden">"O único lugar onde o sucesso vem antes do trabalho é no dicionário."</div>
+    <div class="quote hidden">"A persistência realiza o impossível."</div>
+    <div class="quote hidden">"A vida é 10% do que nos acontece e 90% de como reagimos a isso. :)"</div>
+    <div class="quote hidden">"A arte de vencer se aprende nas derrotas."</div>
+    <div class="quote hidden">"O que não provoca minha morte faz com que eu fique mais forte."</div>
+    <div class="quote hidden">"Só se pode alcançar um grande êxito quando nos mantemos fiéis a nós mesmos."</div>
+    <div class="quote hidden">"A única maneira de fazer um excelente trabalho é amar o que você faz."</div>
+    <div class="quote hidden">"Quanto maior a dificuldade, maior a glória."</div>
+  </div>
+
+  <script>
+    const quotes = document.querySelectorAll('.quote');
+
+    function showNextQuote() {
+      const currentQuote = document.querySelector('.quote:not(.hidden)');
+      currentQuote.classList.add('hidden');
+
+      const nextIndex = Math.floor(Math.random() * quotes.length);
+      const nextQuote = quotes[nextIndex];
+      nextQuote.classList.remove('hidden');
+    }
+
+    setInterval(showNextQuote, 6000); /* Tempo reduzido para 6 segundos */
+  </script>
+</body>
+</html>
